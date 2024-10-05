@@ -51,3 +51,11 @@ function addChatCounter() {
   
     // Rest of the code remains the same...
   }  
+  console.log('Chat counter script loaded.');
+
+function addChatCounter() {
+  console.log('Running chat counter function...');
+  // Your existing code for the counter...
+}
+
+window.addEventListener('load', addChatCounter);
