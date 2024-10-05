@@ -1,11 +1,14 @@
-// content.js
+// Log to confirm that the script is loaded
+console.log('Chat counter script loaded.');
 
 function addChatCounter() {
+    console.log('Running chat counter function...');
+
     // Create a counter element
     const counterElement = document.createElement('div');
     counterElement.id = 'chat-counter';
     counterElement.textContent = 'Chats used: 0';
-  
+
     // Apply styles to the counter
     counterElement.style.position = 'fixed';
     counterElement.style.bottom = '20px';
@@ -16,46 +19,30 @@ function addChatCounter() {
     counterElement.style.borderRadius = '5px';
     counterElement.style.fontSize = '14px';
     counterElement.style.zIndex = '1000';
-  
+
     // Append the counter to the body
     document.body.appendChild(counterElement);
-  
+
     // Function to update the counter
     function updateCounter() {
-      // Select chat elements (modify the selector based on actual ChatGPT DOM)
-      const chats = document.querySelectorAll('.group.w-full'); // Update this selector as needed
-      counterElement.textContent = 'Chats used: ' + chats.length;
+        // Select chat elements (you'll need to update the selector)
+        const chats = document.querySelectorAll('.group.w-full');
+        console.log('Number of chats found:', chats.length);  // Log the number of chats found
+        counterElement.textContent = 'Chats used: ' + chats.length;
     }
-  
+
     // Initial counter update
     updateCounter();
-  
-    // Observe changes in the chat container
-    const chatContainer = document.querySelector('div.flex.flex-col.items-center.text-sm.dark:bg-gray-800'); // Update as needed
-    if (chatContainer) {
-      const observer = new MutationObserver(updateCounter);
-      observer.observe(chatContainer, { childList: true, subtree: true });
-    }
-  }
-  
-  // Wait for the window to load before executing
-  window.addEventListener('load', addChatCounter);
-  // Remove inline styles
-function addChatCounter() {
-    const counterElement = document.createElement('div');
-    counterElement.id = 'chat-counter';
-    counterElement.textContent = 'Chats used: 0';
-  
-    // Append the counter to the body
-    document.body.appendChild(counterElement);
-  
-    // Rest of the code remains the same...
-  }  
-  console.log('Chat counter script loaded.');
 
-function addChatCounter() {
-  console.log('Running chat counter function...');
-  // Your existing code for the counter...
+    // Observe changes in the chat container (you may need to adjust this selector too)
+    const chatContainer = document.querySelector('div.flex.flex-col.items-center.text-sm.dark:bg-gray-800');
+    if (chatContainer) {
+        const observer = new MutationObserver(updateCounter);
+        observer.observe(chatContainer, { childList: true, subtree: true });
+    } else {
+        console.log('Chat container not found');
+    }
 }
 
-window.addEventListener('load', addChatCounter);
+// Wait for the DOM to be fully loaded before running the function
+window.addEventListener('DOMContentLoaded', addChatCounter);
