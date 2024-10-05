@@ -40,4 +40,14 @@ function addChatCounter() {
   
   // Wait for the window to load before executing
   window.addEventListener('load', addChatCounter);
+  // Remove inline styles
+function addChatCounter() {
+    const counterElement = document.createElement('div');
+    counterElement.id = 'chat-counter';
+    counterElement.textContent = 'Chats used: 0';
   
+    // Append the counter to the body
+    document.body.appendChild(counterElement);
+  
+    // Rest of the code remains the same...
+  }  
